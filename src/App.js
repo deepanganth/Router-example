@@ -1,16 +1,25 @@
+import { Routes, Route, Link } from "react-router-dom";
+import About from './component/About';
+import Contact from './component/Contact';
+import Home from './component/Home';
+import NotFound from "./component/NotFound";
 
-import './App.css';
-import ChildComponent from './ChildComponent';
 
 function App() {
-  const name = 'deepan';
-  function handleClick(){
-    console.log('button clicked',name);
-  };
   return (
-    <div className="App">
-      <ChildComponent onClick={handleClick}/>
-    </div>
+      <>
+      <div>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/contact">Contact</Link>
+      </div>
+        <Routes>
+          <Route path="/" exact element={<Home/>}/>
+          <Route path="/about" exact element={<About/>} />
+          <Route path="/contact" exact element={<Contact/>} />
+          <Route path="/*" exact element={<NotFound/>} />
+        </Routes>
+      </>
   );
 }
 
